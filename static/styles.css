@@ -16,7 +16,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: clamp(400px, 90%, 1400px);
-    height: 80%;
+    min-height: 80%;
     text-align: center;
 }
 
