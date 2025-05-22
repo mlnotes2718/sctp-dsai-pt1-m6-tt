@@ -1,0 +1,19 @@
+<head>
+    <meta name ="viewport" content ="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h2>Financial Advisor Chatbot in Telegram</h2>
+        <h4>{{status}}</h4>
+        <form action="/start_telegram" method="post">         
+            <input type="submit" value="Start">
+        </form>
+        <form action="/stop_telegram" method="post">         
+            <input type="submit" value="Stop">
+        </form>
+        <form action="/home" method="post">         
+            <input type="submit" value="Main">
+        </form>
+    </div>
+</body>

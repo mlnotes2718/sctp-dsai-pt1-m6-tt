@@ -1,0 +1,141 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: clamp(400px, 90%, 1400px);
+    height: 80%;
+    text-align: center;
+}
+
+.image-class {
+    max-width: 100%;  /* Ensures the image scales down responsively */
+    height: auto;     /* Maintains the aspect ratio of the image */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+    margin-bottom: 20px; /* Adds space below the image */
+    display: block;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    margin: 15px 0;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.markdown-box{
+    box-sizing: border-box;
+    max-width: 90%;
+    max-height: 80%;
+    overflow: auto;
+    border: 1px solid #ccc;
+    padding: 1em;
+    font-family: monospace;
+    font-size: 18px;
+    color: #333;
+    white-space: pre-wrap;
+    margin: auto;
+    text-align: left;
+
+}
+
+.markdown-box h1,
+.markdown-box h2,
+.markdown-box h3,
+.markdown-box h4,
+.markdown-box h5,
+.markdown-box h6 {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* inline code */
+.markdown-box code {
+  background: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+/* code blocks */
+.markdown-box pre {
+  background: #f0f0f0;
+  padding: 1em;
+  overflow: auto;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .markdown-box {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}

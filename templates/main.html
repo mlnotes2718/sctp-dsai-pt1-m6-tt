@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta name ="viewport" content ="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h2>Web Application</h2>
+        <h3>Welcome {{ name }}</h3> 
+        <h4>This Gemini enabled web app is a customized financial web app that only answer finance related question.</h4>
+        <h4>For asking general question please visit our <a href="https://chainlit-gemini.onrender.com/" target="_blank">Chainlit enabled web interface that is powered by Gemini</a></h4> 
+
+        <form action="/gemini" method="post">
+            <input type="submit" value="Financial Advisor by Gemini">
+        </form>
+        <form action="/telegram_page" method="post">
+            <input type="submit" value="Financial Advisor in Telegram">
+        </form>
+        <form action="/paynow" method="post">
+            <input type="submit" value="Transfer Money">
+        </form>
+        <form action="/logs" method="post">
+            <input type="submit" value="Check Logs">
+        </form>
+        <form action="/del_logs" method="post">
+            <input type="submit" value="Delete Logs">
+        </form>
+        <form action="checkout" method="post">
+            <input type="submit" value="Checkout">
+        </form>
+    </div>
+</body>
+</html>

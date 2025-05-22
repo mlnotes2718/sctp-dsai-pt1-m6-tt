@@ -1,0 +1,14 @@
+<head>
+    <meta name ="viewport" content ="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Gemini Web Applications</h1>
+        <h2>Please Register Your Name For Record Purpose</h2>
+        <form action="/main" method="post">
+            <input type = "text" name="name">           
+            <input type="submit" value="Enter">
+        </form>
+    </div>
+</body>

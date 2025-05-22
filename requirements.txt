@@ -1,0 +1,6 @@
+flask
+gunicorn
+google-genai
+markdown
+markdown2
+requests
