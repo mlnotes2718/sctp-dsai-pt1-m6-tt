@@ -112,7 +112,7 @@ def gemini_reply():
         contents=prompt
     )
     r_html = markdown.markdown(
-            r.text,
+            r.text if r.text is not None else "",
             extensions=["fenced_code", "codehilite"]  
     )
     return(render_template("gemini_reply.html",r=r_html))
