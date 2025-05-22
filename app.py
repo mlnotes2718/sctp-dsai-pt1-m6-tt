@@ -35,12 +35,14 @@ import os
 # The following is for local development
 # Uncomment the following lines if you want to load environment variables from a .env file
 # dotenv is a library for loading environment variables from a .env file
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 ### Load environment variables
-genmini_api_key = os.getenv('GOOGLE_API')
+genmini_api_key = os.getenv('GEMINI_API_KEY')
+# The following is for the telegram bot
+# The telegram bot token is used to authenticate the bot with the Telegram API
 gemini_telegram_token = os.getenv('GEMINI_TELEGRAM_TOKEN')
 
 ### Initialize the Google Gemini client
@@ -117,7 +119,7 @@ def gemini_reply():
 
 
 
-
+### The following route is for the logs page
 @app.route("/logs",methods=["GET","POST"])
 def logs():
     conn = sqlite3.connect(r'user.db')
@@ -141,10 +143,8 @@ def del_logs():
     conn.close()
     return(render_template("del_logs.html"))
 
-@app.route("/home",methods=["GET","POST"])
-def home():
-    return(render_template("main.html"))
 
+### The following route is for the telegram bot
 @app.route("/telegram_page",methods=["GET","POST"])
 def telegram_page():
     status = "The telegram bot is not running. Click the button below to start it."
@@ -209,6 +209,7 @@ def telegram():
     # if the server doesn't respond in time
     return('ok', 200)
 
+### The following route is for the payment page
 @app.route("/paynow",methods=["GET","POST"])
 def paynow():
 
