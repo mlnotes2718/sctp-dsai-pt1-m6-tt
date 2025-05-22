@@ -35,8 +35,8 @@ import os
 # The following is for local development
 # Uncomment the following lines if you want to load environment variables from a .env file
 # dotenv is a library for loading environment variables from a .env file
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 ### Load environment variables
