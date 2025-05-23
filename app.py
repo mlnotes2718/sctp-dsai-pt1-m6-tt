@@ -205,15 +205,10 @@ def telegram():
                 contents=prompt
             )
             r_text = r.text
-            # Convert the response to HTML
-            r_html = markdown.markdown(
-                r_text if r_text is not None else "",
-                extensions=["fenced_code", "codehilite"]
-            )
         
         # Send the response back to the user
         send_message_url = f"https://api.telegram.org/bot{gemini_telegram_token}/sendMessage"
-        requests.post(send_message_url, data={"chat_id": chat_id, "text": r_html})
+        requests.post(send_message_url, data={"chat_id": chat_id, "text": r_text, "parse_mode": "MarkdownV2"})
     # Return a 200 OK response to Telegram
     # This is important to acknowledge the receipt of the message
     # and prevent Telegram from resending the message
