@@ -150,6 +150,9 @@ def del_logs():
 ### The following route is for the telegram bot
 @app.route("/telegram_page",methods=["GET","POST"])
 def telegram_page():
+    domain_url = os.getenv('WEBHOOK_URL')
+    webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/deleteWebhook"
+    requests.post(webhook_url, json={"url": domain_url, "drop_pending_updates": True})
     status = "The telegram bot is not running. Click the button below to start it."
     return(render_template("telegram.html", status=status))
 
