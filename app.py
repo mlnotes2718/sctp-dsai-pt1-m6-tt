@@ -213,7 +213,7 @@ def telegram():
         
         # Send the response back to the user
         send_message_url = f"https://api.telegram.org/bot{gemini_telegram_token}/sendMessage"
-        requests.post(send_message_url, data={"chat_id": chat_id, "text": r_text})
+        requests.post(send_message_url, data={"chat_id": chat_id, "text": r_html})
     # Return a 200 OK response to Telegram
     # This is important to acknowledge the receipt of the message
     # and prevent Telegram from resending the message
