@@ -49,7 +49,7 @@ gemini_telegram_token = os.getenv('GEMINI_TELEGRAM_TOKEN')
 genmini_client = genai.Client(api_key=genmini_api_key)
 genmini_model = "gemini-2.0-flash"
 
-### Flask application setup
+### --------- Flask application setup ---------
 # The Flask application is created using the Flask class
 app = Flask(__name__)
 
@@ -87,21 +87,24 @@ def checkout():
 def home():
     return(render_template("main.html"))
 
-
-### The following route is for the Gemini chatbot
+### ----------- Gemini Chatbot Routes -----------
+### The following route is displayed when the user clicks on the Gemini button
 @app.route("/gemini",methods=["GET","POST"])
 def gemini():
     name = request.form.get("name")
-    return(render_template("gemini.html"))
+    return(render_template("gemini.html",name=name))
 
-
+### The following route is for the Gemini chatbot
 @app.route("/gemini_reply",methods=["GET","POST"])
 def gemini_reply():
     # Getting the user query from the form
     q = request.form.get("q")
 
     # System prompt for financial questions
-    system_prompt = "You are a financial expert.  Answer ONLY questions related to finance, economics, investing, and financial markets. If the question is not related to finance, state that you cannot answer it."
+    system_prompt = """ 
+    You are a financial expert.  Answer ONLY questions related to finance, economics, investing, 
+    and financial markets. If the question is not related to finance, 
+    state that you cannot answer it."""
 
     # Construct the prompt with system prompt and user query
     prompt = f"{system_prompt}\n\nUser Query: {q}"
