@@ -35,8 +35,8 @@ import os
 # The following is for local development
 # Uncomment the following lines if you want to load environment variables from a .env file
 # dotenv is a library for loading environment variables from a .env file
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 
 ### Load environment variables
@@ -205,6 +205,11 @@ def telegram():
                 contents=prompt
             )
             r_text = r.text
+            # Convert the response to HTML
+            r_html = markdown.markdown(
+                r_text if r_text is not None else "",
+                extensions=["fenced_code", "codehilite"]
+            )
         
         # Send the response back to the user
         send_message_url = f"https://api.telegram.org/bot{gemini_telegram_token}/sendMessage"
