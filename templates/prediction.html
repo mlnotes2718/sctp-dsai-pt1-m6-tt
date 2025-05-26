@@ -1,0 +1,12 @@
+<head>
+    <meta name ="viewport" content ="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h2>Predicted DBS share price : {{r}}</h2>
+        <form action="/prediction_page" method="post">
+            <input type="submit" value="Back to Prediction Page">
+        </form>
+    </div>
+</body>

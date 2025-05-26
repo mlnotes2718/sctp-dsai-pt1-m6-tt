@@ -9,8 +9,8 @@ Using an LLM API (e.g., OpenAI, Gemini, Claude), we aim to build a customized LL
 ## Simplest Working Solution
 
 * Web app built using **Python + Flask**
-* LLM Communication: **SDK** (e.g., `openai`, `google-genai`)
-* Communication with front end via **polling**
+* LLM Service Call: **SDK** (e.g., `openai`, `google-genai`)
+* Communication with front end via **webhook**
 * Outbound HTTP calls made via **requests**
 * Deployed on **PaaS** [Render.com](https://render.com)
 

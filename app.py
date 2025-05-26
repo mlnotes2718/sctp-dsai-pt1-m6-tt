@@ -35,8 +35,8 @@ import os
 # The following is for local development
 # Uncomment the following lines if you want to load environment variables from a .env file
 # dotenv is a library for loading environment variables from a .env file
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 
 ### Load environment variables
@@ -146,7 +146,7 @@ def del_logs():
     conn.close()
     return(render_template("del_logs.html"))
 
-
+# ------------- Telegram Bot Routes -----------
 ### The following route is for the telegram bot
 @app.route("/telegram_page",methods=["GET","POST"])
 def telegram_page():
@@ -215,11 +215,29 @@ def telegram():
     # if the server doesn't respond in time
     return('ok', 200)
 
+### --------- Payment Page Setup -----------
 ### The following route is for the payment page
 @app.route("/paynow",methods=["GET","POST"])
 def paynow():
 
     return(render_template("paynow.html"))
+
+### --------- Prediction Page Setup -----------
+@app.route("/prediction_page",methods=["GET","POST"])
+def prediction_page():
+    return(render_template("prediction_page.html"))
+
+@app.route("/prediction",methods=["GET","POST"])
+def prediction():
+    q_str = request.form.get("q")
+    if q_str is None:
+        return render_template("prediction.html", r="Invalid input: No value provided.")
+    try:
+        q = float(q_str)
+        result = (-50.6 * q) + 90.2
+    except ValueError:
+        return render_template("prediction.html", r="Invalid input: Please enter a valid number.")
+    return render_template("prediction.html", r=result)
 
 if __name__ == "__main__":
     app.run()
