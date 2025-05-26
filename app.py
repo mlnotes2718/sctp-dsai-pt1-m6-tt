@@ -148,20 +148,26 @@ def del_logs():
 
 # ------------- Telegram Bot Routes -----------
 ### The following route is for the telegram bot
-@app.route("/telegram_page",methods=["GET","POST"])
-def telegram_page():
-    domain_url = os.getenv('WEBHOOK_URL')
-    webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/deleteWebhook"
-    requests.post(webhook_url, json={"url": domain_url, "drop_pending_updates": True})
-    status = "The telegram bot is not running. Click the button below to start it."
-    return(render_template("telegram.html", status=status))
+# @app.route("/telegram_page",methods=["GET","POST"])
+# def telegram_page():
+#     domain_url = os.getenv('WEBHOOK_URL')
+#     webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/deleteWebhook"
+#     requests.post(webhook_url, json={"url": domain_url, "drop_pending_updates": True})
+#     status = "The telegram bot is not running. Click the button below to start it."
+#     return(render_template("telegram.html", status=status))
 
 @app.route("/start_telegram",methods=["GET","POST"])
 def start_telegram():
+
     domain_url = os.getenv('WEBHOOK_URL')
-    webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/setWebhook?url={domain_url}/telegram"
+
+    # The following line is used to delete the existing webhook URL for the Telegram bot
+    delete_webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/deleteWebhook"
+    requests.post(delete_webhook_url, json={"url": domain_url, "drop_pending_updates": True})
+    
     # Set the webhook URL for the Telegram bot
-    webhook_response = requests.post(webhook_url, json={"url": domain_url, "drop_pending_updates": True})
+    set_webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/setWebhook?url={domain_url}/telegram"
+    webhook_response = requests.post(set_webhook_url, json={"url": domain_url, "drop_pending_updates": True})
     print('webhook:', webhook_response)
     if webhook_response.status_code == 200:
         # set status message
@@ -172,19 +178,19 @@ def start_telegram():
     return(render_template("telegram.html", status=status))
 
 
-@app.route("/stop_telegram",methods=["GET","POST"])
-def stop_telegram():
-    # Remove the webhook URL for the Telegram bot
-    webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/deleteWebhook"
-    remove_webhook_response = requests.post(webhook_url)
-    print(remove_webhook_response)
-    if remove_webhook_response.status_code == 200:
-        status = "The telegram bot is stopped."
-    else:
-        status = "Unable to stop telegram.Please check the logs."
+# @app.route("/stop_telegram",methods=["GET","POST"])
+# def stop_telegram():
+#     # Remove the webhook URL for the Telegram bot
+#     webhook_url = f"https://api.telegram.org/bot{gemini_telegram_token}/deleteWebhook"
+#     remove_webhook_response = requests.post(webhook_url)
+#     print(remove_webhook_response)
+#     if remove_webhook_response.status_code == 200:
+#         status = "The telegram bot is stopped."
+#     else:
+#         status = "Unable to stop telegram.Please check the logs."
 
 
-    return(render_template("telegram.html", status=status))
+#     return(render_template("telegram.html", status=status))
 
 @app.route("/telegram",methods=["GET","POST"])
 def telegram():
