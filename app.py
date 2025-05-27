@@ -210,7 +210,9 @@ def telegram():
                 model=genmini_model,
                 contents=prompt
             )
-            r_text = r.text
+            r_text = r.text if r.text is not None else ""
+            r_text = r_text.replace('**','')
+            
         
         # Send the response back to the user
         send_message_url = f"https://api.telegram.org/bot{gemini_telegram_token}/sendMessage"
