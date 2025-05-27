@@ -48,6 +48,8 @@ Using an LLM API (e.g., OpenAI, Gemini, Claude), we aim to build a customized LL
 * ❗ Requires public HTTPS URL (Render.com, ngrok for local testing)
 * ❗ Requires additional code for multi-users if we include extra features like keeping chat history for context purpose
 
+Please refer to the slides for more details:
+https://docs.google.com/presentation/d/1Z9LkHiUPCFSz47OFb_9rxRdV4XgVZZzw0Ed7AC7hihM/edit?usp=sharing
 
 
 ### Sending Message to Telegram
