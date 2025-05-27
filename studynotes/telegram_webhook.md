@@ -95,6 +95,12 @@ Please also check your environment as shown below:
 
 **IMPORTANT: the environment is case sensitive, you must follow the same casing in the program and in the settings above.**
 
+The `GEMINI_TELEGRAM_TOKEN` is the same token key that we practice on colab.
+
+For `WEBHOOK_URL`, you can get your webhook url at your render.com dashboard similar to the image below :
+
+![alt text](../assest/url.png)
+
 Please also include make sure you have the following in requirement files.
 ```text
 flask
