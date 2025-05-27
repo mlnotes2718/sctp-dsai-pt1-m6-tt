@@ -91,7 +91,7 @@ gemini_telegram_token = os.getenv('GEMINI_TELEGRAM_TOKEN')
 ```
 
 Please also check your environment as shown below:
-![alt text](assest/render_env.png)
+![alt text](../assest/render_env.png)
 
 **IMPORTANT: the environment is case sensitive, you must follow the same casing in the program and in the settings above.**
 
@@ -103,3 +103,5 @@ google-genai
 google-generativeai
 requests
 ```
+
+**IMPORTANT: To test telegram, we need to deploy and run on render.com. Testing locally is not possible unless you get a public address from Ngrok and configure some network settings.**
