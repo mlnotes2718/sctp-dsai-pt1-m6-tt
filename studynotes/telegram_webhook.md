@@ -90,10 +90,11 @@ model = genai1.GenerativeModel("gemini-2.0-flash")
 gemini_telegram_token = os.getenv('GEMINI_TELEGRAM_TOKEN')
 ```
 
+## Environment Settings
 Please also check your environment as shown below:
 ![alt text](../assest/render_env.png)
 
-**IMPORTANT: the environment is case sensitive, you must follow the same casing in the program and in the settings above.**
+**IMPORTANT: the environment is case sensitive, you must follow the same casing in the `app.py` and in the settings above.**
 
 The `GEMINI_TELEGRAM_TOKEN` is the same token key that we practice on colab.
 
