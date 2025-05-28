@@ -30,21 +30,14 @@ import datetime
 from datetime import timezone, datetime
 import markdown, markdown2
 import os
-
+from sklearn.feature_extraction.text import CountVectorizer
 import joblib
-#from sklearn.linear_model import LogisticRegression
-import numpy as np
 
-## test code for loading the model and making a prediction
-xemb = np.loadtxt("X_emb.npy", dtype=np.float32)
-print("xemb shape:", xemb.shape)
-xemb = xemb.reshape(1, -1)  # Reshape to match the model's expected input shape
-
-
-model = joblib.load("model.pkl")
-answer = model.predict(xemb)
-print("the text is:", answer)
-
+message = "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005."
+X_countV = CountVectorizer().fit_transform(message)
+model = joblib.load("lrmodel.pkl")
+pred = model.predict(X_countV)
+print('the text is:', pred)
 
 # Load environment variables from .env file
 # The following is for local development
