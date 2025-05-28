@@ -5,5 +5,5 @@ markdown
 markdown2
 requests
 joblib
-sk-learn
+scikit-learn
 pandas
