@@ -37,7 +37,9 @@ import numpy as np
 
 xemb = np.loadtxt("X_emb.npy", dtype=np.float32)
 model = joblib.load("model.pkl")
-model.predict(xemb)
+answer = model.predict(xemb)
+print("the text is:", answer)
+
 
 # Load environment variables from .env file
 # The following is for local development
