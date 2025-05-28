@@ -36,6 +36,10 @@ import joblib
 import numpy as np
 
 xemb = np.loadtxt("X_emb.npy", dtype=np.float32)
+print("xemb shape:", xemb.shape)
+xemb = xemb.reshape(1, -1)  # Reshape to match the model's expected input shape
+
+
 model = joblib.load("model.pkl")
 answer = model.predict(xemb)
 print("the text is:", answer)
