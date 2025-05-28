@@ -38,7 +38,7 @@ import numpy as np
 ## test code for loading the model and making a prediction
 xemb = np.loadtxt("X_emb.npy", dtype=np.float32)
 print("xemb shape:", xemb.shape)
-xemb = xemb.reshape(-1, 1)  # Reshape to match the model's expected input shape
+xemb = xemb.reshape(1, -1)  # Reshape to match the model's expected input shape
 
 
 model = joblib.load("model.pkl")
