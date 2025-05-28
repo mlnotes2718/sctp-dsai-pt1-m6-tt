@@ -31,6 +31,14 @@ from datetime import timezone, datetime
 import markdown, markdown2
 import os
 
+import joblib
+#from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+xemb = np.loadtxt("X_emb.npy", dtype=np.float32)
+model = joblib.load("model.pkl")
+model.predict(xemb)
+
 # Load environment variables from .env file
 # The following is for local development
 # Uncomment the following lines if you want to load environment variables from a .env file
