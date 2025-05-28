@@ -34,9 +34,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 import joblib
 
 message = "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005."
-X_countV = CountVectorizer().fit_transform(message)
-model = joblib.load("lrmodel.pkl")
-pred = model.predict(X_countV)
+model = joblib.load("lr_model.pkl")
+encoder = joblib.load("cv_encoder.pkl")
+X = encoder.transform([message])
+pred = model.predict(X)
 print('the text is:', pred)
 
 # Load environment variables from .env file
