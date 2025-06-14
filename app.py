@@ -30,15 +30,7 @@ import datetime
 from datetime import timezone, datetime
 import markdown, markdown2
 import os
-from sklearn.feature_extraction.text import CountVectorizer
-import joblib
 
-message = "FreeMsg Hey there darling it's been 3 week's now and no word back! I'd like some fun you up for it still? Tb ok! XxX std chgs to send, £1.50 to rcv"
-model = joblib.load("lr_model.pkl")
-encoder = joblib.load("cv_encoder.pkl")
-X = encoder.transform([message])
-pred = model.predict(X)
-print('the text is:', pred)
 
 # Load environment variables from .env file
 # The following is for local development
@@ -211,32 +203,6 @@ def telegram():
 
         if text == "/start":
             r_text = "Welcome to the Gemini Telegram Bot! You can ask me any finance-related questions."
-        elif text == "/spam":
-            r_text = "Please enter the text and we will tell you if it is a spam."
-            # Send the response back to the user
-            send_message_url = f"https://api.telegram.org/bot{gemini_telegram_token}/sendMessage"
-            requests.post(send_message_url, data={"chat_id": chat_id, "text": r_text})
-            update = request.get_json()
-            if "message" in update and "text" in update["message"]:
-                # Extract the chat ID and message text from the update
-                chat_id = update["message"]["chat"]["id"]
-                text = update["message"]["text"]
-            # Process the spam message
-            model = joblib.load("lr_model.pkl")
-            encoder = joblib.load("cv_encoder.pkl")
-            X = encoder.transform([message])
-            pred = model.predict(X)
-            if pred == 'spam':
-                r_text = "The text is classified as SPAM."
-            else:
-                r_text = "The text is classified as NOT SPAM."
-            # Send the response back to the user
-            send_message_url = f"https://api.telegram.org/bot{gemini_telegram_token}/sendMessage"
-            requests.post(send_message_url, data={"chat_id": chat_id, "text": r_text})
-            print('Your text is:', pred)
-
-            r_text = "Switching back to the Gemini chatbot. Type /spam to classify another text as spam or not spam."
-            requests.post(send_message_url, data={"chat_id": chat_id, "text": r_text})
         else:
             # Process the message and generate a response
             system_prompt = "You are a financial expert.  Answer ONLY questions related to finance, economics, investing, and financial markets. If the question is not related to finance, state that you cannot answer it."

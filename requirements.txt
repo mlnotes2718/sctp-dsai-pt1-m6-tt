@@ -4,6 +4,3 @@ google-genai
 markdown
 markdown2
 requests
-joblib
-scikit-learn
-pandas
